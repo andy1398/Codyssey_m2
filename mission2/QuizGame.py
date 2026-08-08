@@ -81,4 +81,15 @@ for c in ...:
         self.quizzes.append(new_quiz)
         self.save_current_state()
         print("성공적으로 저장되었습니다!")
+        
+    def view_list(self) -> None:
+        if not self.quizzes:
+            print("\n등록된 퀴즈가 없습니다.")
+            return
+
+        print(f"\n등록된 퀴즈 목록 (총 {len(self.quizzes)}개)")
+        print("-" * 40)
+        for idx, quiz in enumerate(self.quizzes, 1):
+            print(f"{idx}. {quiz.question}")
+        print("-" * 40)
  
