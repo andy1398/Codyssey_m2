@@ -16,7 +16,7 @@ class StorageHandler:
     def __init__(self, file_path: str = "state.json"):
         self.file_path = file_path
         
-    def load_data(self) -> Tuple[List[Quiz], int, List[Dict[str, Any]]]:
+    def load_data(self) -> Tuple[List[Quiz], int, List[Dict[str, Any]], str]:
         if not os.path.exists(self.file_path):
             return self._get_default_data()
         """os가 컴터에 해당 경로에 파일이 있는지 물어보는 거임
@@ -27,7 +27,7 @@ class StorageHandler:
                 quizzes = [Quiz.from_dict(q) for q in data.get("quizzes", [])]
                 best_score = data.get("best_score", 0)
                 history = data.get("history", [])
-                
+                user_name = data.get("user_name", "게스트")
                 """
                 data.get("quizzes", []): data 딕셔너리에서 "quizzes"라는 키의 값을 가져옵니다. 만약 그 키가 없으면 안전하게 빈 리스트 []를 기본값으로 가져옵니다.
                 for q in ...: 가져온 퀴즈 딕셔너리 목록에서 문제 1개씩(q) 꺼내며 반복합니다.
@@ -37,7 +37,7 @@ class StorageHandler:
                 if not quizzes:
                     return self._get_default_data()
 
-                return quizzes, best_score, history
+                return quizzes, best_score, history, user_name
 
         except (json.JSONDecodeError, KeyError, TypeError, IOError) as e:
             print(f"\n[경고] 데이터 파일({self.file_path})이 손상되었습니다. 기본 데이터로 복구합니다. ({e})")
@@ -47,11 +47,12 @@ class StorageHandler:
         quizzes = [Quiz.from_dict(q) for q in DEFAULT_QUIZZES]
         return quizzes, 0, []
     
-    def save_data(self, quizzes: List[Quiz], best_score: int, history: List[Dict[str, Any]]) -> bool:
+    def save_data(self, quizzes: List[Quiz], best_score: int, history: List[Dict[str, Any]], user_name: str) -> bool:
         data = {
             "quizzes": [q.to_dict() for q in quizzes],
             "best_score": best_score,
             "history": history,
+            "user_name": user_name,
         }
         try:
             with open(self.file_path, "w", encoding="utf-8") as f:

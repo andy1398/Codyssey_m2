@@ -11,15 +11,16 @@ class QuizGame:
         self.quizzes: List[Quiz] = []
         self.best_score: int = 0
         self.history: List[Dict[str, Any]] = []
+        self.user_name: str = "게스트"
         self.reload_data()
         
     def reload_data(self) -> None:
         """저장소로부터 데이터 갱신"""
-        self.quizzes, self.best_score, self.history = self.storage.load_data()
+        self.quizzes, self.best_score, self.history,self.user_name = self.storage.load_data()
         
     def save_current_state(self) -> None:
         """현재 데이터 저장"""
-        self.storage.save_data(self.quizzes, self.best_score, self.history)
+        self.storage.save_data(self.quizzes, self.best_score, self.history,self.user_name)
         
     def play_quiz(self) -> None:
         if not self.quizzes:
@@ -35,13 +36,13 @@ class QuizGame:
 
         score = 0
         correct_count = 0
-        print(f"\n퀴즈를 시작합니다! (총 {target_count}문제)")
+        print(f"\n퀴즈를 시작합니다! (플레이어: {self.user_name} | 총 {target_count}문제)")
 
         for i, quiz in enumerate(selected_quizzes, 1):
             quiz.display(i)
 
             # 힌트 사용 여부 확인 및 점수 차감 로직
-            print("\n💡 힌트를 보시겠습니까?")
+            print("\n힌트를 보시겠습니까?")
             print(" 1. 힌트 보기 (정답 시 점수 50% 차감)")
             print(" 2. 바로 정답 입력하기")
             hint_choice = InputValidator.read_int_in_range("선택: ", 1, 2)
@@ -64,10 +65,11 @@ class QuizGame:
         
         print(f"\n최종 결과: {target_count}문제 중 {correct_count}문제 맞춤 | 총점: {score}점")
 
-        # 게임 기록(일시, 푼 문제 수, 정답 수, 점수) 히스토리에 추가
+        # 게임 기록(일시, 유저 이름, 푼 문제 수, 정답 수, 점수) 히스토리에 추가
         now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         record = {
             "datetime": now_str,
+            "user_name": self.user_name,
             "total_questions": target_count,
             "correct_count": correct_count,
             "score": score,
@@ -75,7 +77,7 @@ class QuizGame:
         self.history.append(record)
 
         if score > self.best_score:
-            print("축하합니다! 최고 점수를 갱신했습니다.")
+            print(f" 축하합니다! {self.user_name}님이 최고 점수를 갱신했습니다.")
             self.best_score = score
             
         self.save_current_state()
@@ -153,13 +155,23 @@ for c in ...:
         print("\n 최근 게임 기록 (최근 5건)")
         print("-" * 50)
         for record in reversed(self.history[-5:]):
+            player = record.get("user_name", "게스트")
             print(
                 f"[{record['datetime']}] "
+                f"플레이어: {player} | "
                 f"풀이 문제 수: {record['total_questions']}개 | "
                 f"정답 수: {record['correct_count']}개 | "
                 f"점수: {record['score']}점"
             )
         print("-" * 50)
+    
+    def set_user_name(self) -> None:
+        """유저 이름 설정 기능"""
+        print(f"\n현재 유저 이름: {self.user_name}")
+        new_name = InputValidator.read_non_empty_string("새로운 유저 이름을 입력하세요: ")
+        self.user_name = new_name
+        self.save_current_state()
+        print(f"유저 이름이 '{self.user_name}'(으)로 변경되었습니다!")
         
     def run(self) -> None:
         """메인 실행 메뉴 루프"""
@@ -172,7 +184,8 @@ for c in ...:
             print(" 3. 퀴즈 삭제")
             print(" 4. 퀴즈 목록")
             print(" 5. 최고 점수 및 기록 확인")
-            print(" 6. 종료")
+            print(" 6. 유저 이름 변경")
+            print(" 7. 종료")
             print("========================================")
 
             choice = InputValidator.read_int_in_range("메뉴 선택: ", 1, 6)
@@ -188,6 +201,8 @@ for c in ...:
             elif choice == 5:
                 self.view_score()
             elif choice == 6:
+                self.set_user_name()
+            elif choice == 7:
                 print("\n게임을 종료합니다. 이용해 주셔서 감사합니다.")
                 self.save_current_state()
                 break
