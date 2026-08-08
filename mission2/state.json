@@ -1,0 +1,81 @@
+{
+  "quizzes": [
+    {
+      "question": "1+1 = ?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": 2,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    },
+    {
+      "question": "France의 수도는?",
+      "choices": [
+        "London",
+        "Berlin",
+        "Paris",
+        "Madrid"
+      ],
+      "answer": 3,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    },
+    {
+      "question": "Python의 개발자는?",
+      "choices": [
+        "Guido van Rossum",
+        "James Gosling",
+        "Brendan Eich",
+        "Dennis Ritchie"
+      ],
+      "answer": 1,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    },
+    {
+      "question": "JavaScript의 창시자는?",
+      "choices": [
+        "Brendan Eich",
+        "Guido van Rossum",
+        "James Gosling",
+        "Dennis Ritchie"
+      ],
+      "answer": 1,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    },
+    {
+      "question": "C언어의 창시자는?",
+      "choices": [
+        "Dennis Ritchie",
+        "Brendan Eich",
+        "Guido van Rossum",
+        "James Gosling"
+      ],
+      "answer": 1,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    },
+    {
+      "question": "현대통령 이름은?",
+      "choices": [
+        "1. 문재인",
+        "2. 이재명",
+        "3. 나",
+        "4. 홍씨",
+        "5. 비밀",
+        "7. 바이드"
+      ],
+      "answer": 2,
+      "hint": "힌트가 제공되지 않는 문제입니다."
+    }
+  ],
+  "best_score": 5,
+  "history": [
+    {
+      "datetime": "2026-08-08 19:17:28",
+      "total_questions": 1,
+      "correct_count": 1,
+      "score": 5
+    }
+  ]
+}
