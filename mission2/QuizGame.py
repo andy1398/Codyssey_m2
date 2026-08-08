@@ -97,3 +97,31 @@ for c in ...:
         print("\n" + "=" * 40)
         print(f"현재 최고 점수: {self.best_score}점")
         print("=" * 40)
+        
+    def run(self) -> None:
+        """메인 실행 메뉴 루프"""
+        while True:
+            print("\n========================================")
+            print("            퀴즈 게임            ")
+            print("========================================")
+            print(" 1. 퀴즈 풀기")
+            print(" 2. 퀴즈 추가")
+            print(" 3. 퀴즈 목록")
+            print(" 4. 최고 점수 확인")
+            print(" 5. 종료")
+            print("========================================")
+
+            choice = InputValidator.read_int_in_range("메뉴 선택: ", 1, 5)
+
+            if choice == 1:
+                self.play_quiz()
+            elif choice == 2:
+                self.add_quiz()
+            elif choice == 3:
+                self.view_list()
+            elif choice == 4:
+                self.view_score()
+            elif choice == 5:
+                print("\n게임을 종료합니다. 이용해 주셔서 감사합니다.")
+                self.save_current_state()
+                break
