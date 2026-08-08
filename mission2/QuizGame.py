@@ -1,7 +1,7 @@
 from typing import List
 from Quiz import Quiz
 from storage import StorageHandler
-from mission2.utils import InputValidator
+from utils import InputValidator
 
 class QuizGame:
     def __init__(self, file_path: str = "state.json"):

@@ -1,7 +1,7 @@
 import json
 import os
 from typing import List, Dict, Any, Tuple
-from mission2.Quiz import Quiz
+from Quiz import Quiz
 
 DEFAULT_QUIZZES = [
     {"question": "1+1 = ?", "choices": ["1", "2", "3", "4"], "answer": 2},
@@ -59,10 +59,9 @@ class StorageHandler:
             print(f"\n[오류] 데이터 저장 실패: {e}")
             return False
         
-        """q라는 변수 이름을 사용했기 때문에 q.to_dict()
+        """
+        q라는 변수 이름을 사용했기 때문에 q.to_dict()
         파일을 저장(쓰기)하는 과정에서 발생할 수 있는 거의 모든 문제는 '입출력 오류(Input/Output Error)'에 해당하기 때문에 IOError 사용
         (권한 , 용량, 경로)
-        json 모듈은 기본 설정이 ensure_ascii=True 로 되어 있기때문에 SON 파일에 한글이 전부 \u로 시작하는 이상한 유니코드 암호 코드(16진수)로 저장됨
-        
-        
+        json 모듈은 기본 설정이 ensure_ascii=True 로 되어 있기때문에 SON 파일에 한글이 전부 이상한 유니코드 암호 코드(16진수)로 저장됨
         """
