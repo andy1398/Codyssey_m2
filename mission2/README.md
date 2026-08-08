@@ -7,6 +7,18 @@ git branch -M main
 git remote add origin https://github.com/andy1398/Codyssey_m2.git
 git push -u origin main
 
+**새 저장소 깃 연결**
+
+<img width="583" height="558" alt="Image" src="https://github.com/user-attachments/assets/fade1465-4814-48f3-beb7-212a651f0ef4" />
+
+**커밋 10번**
+
+<img width="744" height="772" alt="Image" src="https://github.com/user-attachments/assets/f9361280-1ce3-4f3f-8ed8-ff1df4ea13bd" />
+
+**병합**
+
+<img width="369" height="232" alt="Image" src="https://github.com/user-attachments/assets/c34e3d24-0ce9-4964-a094-df246f666051" />
+
 # 2. 프로젝트 개요
 프로젝트 이름: Python Quiz Game (나만의 퀴즈 게임)
 개발 기간: 2026년 8월 (개인 프로젝트)
