@@ -92,4 +92,8 @@ for c in ...:
         for idx, quiz in enumerate(self.quizzes, 1):
             print(f"{idx}. {quiz.question}")
         print("-" * 40)
- 
+        
+    def view_score(self) -> None:
+        print("\n" + "=" * 40)
+        print(f"현재 최고 점수: {self.best_score}점")
+        print("=" * 40)
