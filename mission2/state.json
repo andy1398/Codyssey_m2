@@ -69,13 +69,33 @@
       "hint": "힌트가 제공되지 않는 문제입니다."
     }
   ],
-  "best_score": 5,
+  "best_score": 50,
   "history": [
     {
       "datetime": "2026-08-08 19:17:28",
       "total_questions": 1,
       "correct_count": 1,
       "score": 5
+    },
+    {
+      "datetime": "2026-08-08 19:55:51",
+      "total_questions": 1,
+      "correct_count": 0,
+      "score": 0
+    },
+    {
+      "datetime": "2026-08-08 19:56:46",
+      "total_questions": 6,
+      "correct_count": 4,
+      "score": 35
+    },
+    {
+      "datetime": "2026-08-08 20:02:02",
+      "user_name": "sd",
+      "total_questions": 6,
+      "correct_count": 5,
+      "score": 50
     }
-  ]
+  ],
+  "user_name": "sd"
 }
