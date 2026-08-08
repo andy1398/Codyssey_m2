@@ -188,7 +188,7 @@ for c in ...:
             print(" 7. 종료")
             print("========================================")
 
-            choice = InputValidator.read_int_in_range("메뉴 선택: ", 1, 6)
+            choice = InputValidator.read_int_in_range("메뉴 선택: ", 1, 7)
 
             if choice == 1:
                 self.play_quiz()
