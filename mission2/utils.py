@@ -26,6 +26,6 @@ class InputValidator:
                 val = int(raw)
                 if min_val <= val <= max_val:
                     return val
-                print(f"⚠️ {min_val}~{max_val} 사이의 숫자를 입력하세요.")
+                print(f" {min_val}~{max_val} 사이의 숫자를 입력하세요.")
             except ValueError:
                 print("숫자가 아닙니다. 올바른 숫자를 입력하세요.")
