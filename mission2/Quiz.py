@@ -26,3 +26,43 @@ enumerate(리스트, 시작할_숫자)
 2번째 바퀴: (2, "뱀")
 3번째 바퀴: (3, "고양이") 이렇게 됨. 따라서 for 뒤에변수 이름은 맘대로 적어도됨.
 """
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "question": self.question,
+            "choices": self.choices,
+            "answer": self.answer,
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "Quiz":
+        """JSON 딕셔너리로부터 Quiz 객체 생성"""
+        return cls(
+            question=data["question"],
+            choices=data["choices"],
+            answer=data["answer"],
+        )
+    """
+객체(인스턴스)를 생성하지 않고도 클래스 자체에서 직접 호출할 수 있는 메서드로 만들어주는 데코레이터
+클래스 메서드(@classmethod) 내부에서 cls(...)를 호출하여 리턴하면 해당 클래스의 인스턴스(객체)를 생성하여 반환
+"""
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "question": self.question,
+            "choices": self.choices,
+            "answer": self.answer,
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "Quiz":
+        """JSON 딕셔너리로부터 Quiz 객체 생성"""
+        return cls(
+            question=data["question"],
+            choices=data["choices"],
+            answer=data["answer"],
+        )
+    """
+객체(인스턴스)를 생성하지 않고도 클래스 자체에서 직접 호출할 수 있는 메서드로 만들어주는 데코레이터
+클래스 메서드(@classmethod) 내부에서 cls(...)를 호출하여 리턴하면 해당 클래스의 인스턴스(객체)를 생성하여 반환
+"""
